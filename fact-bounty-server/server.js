@@ -1,7 +1,7 @@
-const express    = require('express')
-const mongoose   = require('mongoose')
+const express = require('express')
+const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-const passport   = require('passport')
+const passport = require('passport')
 
 const users = require('./routes/api/user')
 const stories = require('./routes/api/story')
@@ -20,7 +20,7 @@ app.use(bodyParser.json())
 const db = require('./config/keys').mongoURI
 
 // Connect to MongoDB
-mongoose.connect(db, {useNewUrlParser: true})
+mongoose.connect(db, { useNewUrlParser: true })
 	.then(() => console.log('MongoDB successfully connected'))
 	.catch(err => console.log(err))
 

@@ -1,5 +1,3 @@
-const MONGO_URI = 'mongodb://travis:test@localhost:27017/mydb_test'
-
 var expect = require('chai').expect
 var mongoose = require('mongoose')
 var User = require('../models/user')
@@ -18,7 +16,7 @@ chai.use(chaiHttp)
 
 describe('Authentication tests', async () => {
 	before(function (done) {
-		const db_uri = require('../config/keys').mongoURI || MONGO_URI
+		const db_uri = require('../config/keys.example').mongoURI
 		mongoose.connect(db_uri, { useNewUrlParser: true })
 			.then(() => console.log('MongoDB successfully connected'))
 			.catch(err => console.log(err))

@@ -6,11 +6,11 @@ const userController = require('../../controllers/user')
 
 
 router.post(
-  '/register', 
-  userController.userRegister)
+	'/register', 
+	userController.userRegister)
 
 router.post(
-  '/login', 
-  userController.userLogin)
+	'/login', 
+	userController.userLogin)
 
 module.exports = router

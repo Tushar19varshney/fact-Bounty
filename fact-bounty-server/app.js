@@ -27,7 +27,14 @@ app.use(passport.initialize())
 require('./config/passport')(passport)
 
 // DB Config
-const db = require('./config/keys').mongoURI
+let db
+
+try {
+	db = require('../config/keys')
+	db = db.mongoURI    
+} catch (ex) {
+    db = 'mongodb://travis:test@localhost:27017/mydb_test'
+}
 
 // Connect to MongoDB
 mongoose.connect(db, { useNewUrlParser: true })

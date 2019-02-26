@@ -27,14 +27,19 @@ app.use(passport.initialize())
 require('./config/passport')(passport)
 
 // DB Config
+var path = require('path')
 let db
+const MONGO_TEST = 'mongodb://travis:test@localhost:27017/mydb_test'
 
-try {
-	db = require('../config/keys')
-	db = db.mongoURI    
-} catch (ex) {
-    db = 'mongodb://travis:test@localhost:27017/mydb_test'
-}
+path.exists('./config/keys.js', function(exists) { 
+  if (exists) { 
+	db= path.mongoURI
+  }
+  else{
+	db=MONGO_TEST
+  } 
+});
+
 
 // Connect to MongoDB
 mongoose.connect(db, { useNewUrlParser: true })

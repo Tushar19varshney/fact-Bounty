@@ -1,4 +1,5 @@
 process.env.NODE_ENV = 'test'
+const MONGO_URI = 'mongodb://travis:test@localhost:27017/mydb_test'
 
 let mongoose = require('mongoose')
 let story = require('../models/story')
@@ -13,6 +14,17 @@ let should = chai.should()
 chai.use(chaiHttp)
 
 describe('Story', () => {
+	before(function (done) {
+		const db_uri = require('../config/keys').mongoURI || MONGO_URI
+		mongoose.connect(db_uri, { useNewUrlParser: true })
+			.then(() => console.log('MongoDB successfully connected'))
+			.catch(err => console.log(err))
+		const db = mongoose.connection
+		db.on('error', console.error.bind(console, 'connection error'))
+		db.once('open', function() {
+			done()
+		})
+	})
 
 	describe('/GET allStories', () => {
 		it('It should GET all stories', (done) => {

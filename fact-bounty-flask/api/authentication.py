@@ -1,8 +1,8 @@
 from flask import jsonify, g
 from flask_httpauth import HTTPBasicAuth
 from .models.user import User
-from . import api
-from .errrors import unauthoized, forbidden
+from .. import api
+from .errors import unauthoized, forbidden
 
 auth = HTTPBasicAuth()
 
@@ -25,7 +25,6 @@ def verify_password(email_or_token, password):
 @auth.error_handler
 def auth_error():
     return unauthorized('Invalid credentials')
-
 
 
 @api.route('/users/tokens', methods=['POST'])

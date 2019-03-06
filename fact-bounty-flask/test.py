@@ -29,6 +29,7 @@ def create_app(config_name):
 
     from .api_es import api_es as api_es_blueprint
     app.register_blueprint(api_es_blueprint, url_prefix='/api_es')
+
     return app
 
 def register_commands(app):

@@ -3,7 +3,7 @@
 
 import pytest
 from .. import create_app
-from . import db as _db
+from .. import db as _db
 
 @pytest.fixture
 def testapp():

@@ -60,3 +60,4 @@ def test(coverage):
 def deploy():
     # migrate database to latest revision
     upgrade()
+    

@@ -8,4 +8,4 @@ python:
 install:
   - pip install -r fact-bounty-flask/requirements.txt
 
-script: flask run
+script: flask test

@@ -3,11 +3,9 @@ language: python
 env:
 - FLASK_APP=app.py FLASK_DEBUG=1
 python:
-  - 2.7
-  - 3.4
   - 3.5
   - 3.6
 install:
   - pip install -r fact-bounty-flask/requirements.txt
 
-script: flask test
+script: flask run

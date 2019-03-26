@@ -9,18 +9,8 @@ USER_DATA = dict(
     email='example@gmail.com',
     password='password',
 )
-
-class Test_Login(unittest.TestCase):
-    def setUp(self):
-        self.db_fd, FLASKR.config['SQLALCHEMY_DATABASE_URI'] = tempfile.mkstemp()
-        FLASKR.testing = True
-        self.app = FLASKR.app.app.test_client()
-
-
-    def tearDown(self):
-        os.close(self.db_fd)
-        os.unlink(FLASKR.config['SQLALCHEMY_DATABASE_URI'])
-
+from base import BaseTestCase
+class Test_Login(BaseTestCase):
 
     def test_can_log_in_returns_200(self):
         """Login successful."""

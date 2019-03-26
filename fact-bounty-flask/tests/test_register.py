@@ -12,17 +12,9 @@ USER_DATA = dict(
     password2='password'
 )
 
-class Test_Register(unittest.TestCase):
-    def setUp(self):
-        self.db_fd, FLASKR.config['SQLALCHEMY_DATABASE_URI'] = tempfile.mkstemp()
-        FLASKR.testing = True
-        self.app = FLASKR.app.app.test_client()
-    
-    def tearDown(self):
-        os.close(self.db_fd)
-        os.unlink(FLASKR.config['SQLALCHEMY_DATABASE_URI'])
-        # FLASKR.db.session.remove()
-        # FLASKR.db.drop_all()
+from base import BaseTestCase
+
+class Test_Register(BaseTestCase):
 
     def test_can_register(self):
         """Register a new user."""
